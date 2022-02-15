@@ -6855,11 +6855,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\asus\\source\\repos\\AptManagement\\AptManagement\\AptManagement.csproj",
+      "projectUniqueName": "C:\\Users\\asus\\Desktop\\Project\\AptManagement\\AptManagement\\AptManagement.csproj",
       "projectName": "AptManagement",
-      "projectPath": "C:\\Users\\asus\\source\\repos\\AptManagement\\AptManagement\\AptManagement.csproj",
+      "projectPath": "C:\\Users\\asus\\Desktop\\Project\\AptManagement\\AptManagement\\AptManagement.csproj",
       "packagesPath": "C:\\Users\\asus\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\asus\\source\\repos\\AptManagement\\AptManagement\\obj\\",
+      "outputPath": "C:\\Users\\asus\\Desktop\\Project\\AptManagement\\AptManagement\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\asus\\AppData\\Roaming\\NuGet\\NuGet.Config",

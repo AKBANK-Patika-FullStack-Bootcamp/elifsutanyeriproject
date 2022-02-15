@@ -14,32 +14,54 @@ function App() {
   const [isAdmin, setIsAdmin] = useState(null);
 
 
-  let authAxios;
+
 
   const login = () => {
+    let token;
     axios.post(API_URL + "Authentication/login",
     {
       username, password
     }).then(response => {
+      token = localStorage.setItem("token",JSON.stringify(response.data.token));
       console.log(response.data);
       if (response.status === 200){
         setIsAdmin(response.data.isAdmin);
-        authAxios =  axios.create({
-          baseURL: API_URL,
-          timeout: 5000000,
-          headers: {
-            'Authorization': "bearer " + response.data,
-            'Content-Type': 'application/json'
-          }
-        });
       }
     });
   };
 
-  const getBills = () => {
-    // authAxios.get("Users").then(response => {console.log(response);})
-    axios.get(API_URL + "Admin/userInfo").then((response) => {console.log(response);})
+  const authAxios = () => {
+  const token = localStorage.getItem('token');
+    axios.create({
+      baseURL: API_URL + "Admin",
+      timeout: 5000000,
+      headers: {
+        'Authorization': "bearer " + token,
+        'Content-Type': 'application/json',
+        
+      }
+    });
   }
+
+ 
+
+  
+    // Create instance
+    const instance = () =>{ axios.create(authAxios);
+  
+    // Set the AUTH token for any request
+    instance.interceptors.request.use(function (config) {
+      const token = localStorage.getItem('token');
+      config.headers.Authorization =  token ? `Bearer ${token}` : '';
+      return config;
+    });
+  
+    return instance;
+  };
+
+  
+
+
 
   function validateForm() {
     return username.length > 0 && password.length > 0;
@@ -88,9 +110,8 @@ function App() {
   {isAdmin === true ? <Redirect to='/admin' /> : <Redirect to='/user'/>}
   </>
   }
-    </>
+   </> 
   );
-
 }
 
 export default App;
