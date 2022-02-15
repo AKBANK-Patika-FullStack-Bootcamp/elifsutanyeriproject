@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "aF2Kh9shVj844g+YNRhryhp7i4YKD2NXAit6Yjf8AFs=",
+  "Source": "AptManagement",
+  "BasePath": "_content/AptManagement",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
