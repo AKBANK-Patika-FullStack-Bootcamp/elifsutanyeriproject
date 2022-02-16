@@ -22,7 +22,7 @@ function App() {
     {
       username, password
     }).then(response => {
-      token = localStorage.setItem("token",JSON.stringify(response.data.token));
+      token = localStorage.setItem("token", response.data.token);
       console.log(response.data);
       if (response.status === 200){
         setIsAdmin(response.data.isAdmin);
@@ -36,28 +36,15 @@ function App() {
       baseURL: API_URL + "Admin",
       timeout: 5000000,
       headers: {
-        'Authorization': "bearer " + token,
+        //burda bearer + demem gerekebilir bakıcaz
+        'Authorization': token,
         'Content-Type': 'application/json',
         
       }
-    });
+    }); 
   }
 
  
-
-  
-    // Create instance
-    const instance = () =>{ axios.create(authAxios);
-  
-    // Set the AUTH token for any request
-    instance.interceptors.request.use(function (config) {
-      const token = localStorage.getItem('token');
-      config.headers.Authorization =  token ? `Bearer ${token}` : '';
-      return config;
-    });
-  
-    return instance;
-  };
 
   
 
