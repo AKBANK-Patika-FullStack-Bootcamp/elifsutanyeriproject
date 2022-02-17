@@ -9,10 +9,10 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { withRouter } from 'react-router-dom';
 
 
-
-export default function AdminPage() {
+function AdminPage() {
 
   const [users, setUsers] = useState("");
 
@@ -84,4 +84,6 @@ export default function AdminPage() {
     </div>
 </>
 )}
+
+export default withRouter(AdminPage);
           

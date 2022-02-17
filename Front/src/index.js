@@ -11,29 +11,20 @@ import AdminPage from './Pages/AdminPageController/AdminPage';
 // import AptInfo from './Pages/AdminPageController/AptInfo';
 // import BillsInfo from './Pages/AdminPageController/BillsInfo';
 import UserPage from './Pages/UserPageController/UserPage';
-
+import  ProtectedRoute from './Components/ProtectedRoute';
+import setIsAdmin from './App'
+import userInfo from './Pages/AdminPageController/UserInfo'
 
 const Routing = () => {
   return(
 <>
   <Router>
     <Header/>
-    {/* <nav className='navbar'>
-      <ul>
-        <li><Link to="/login">Home</Link></li>
-        <li><Link to="/admin">Admin</Link></li>
-        <li><Link to="/user">User</Link></li>
-        <li><Link to="/register">Register</Link></li>
-        </ul>
-      </nav> */}
       <Switch>
       <Route exact path="/" component={App} />
-      <Route path="/admin" component={AdminPage} />
+      <ProtectedRoute path="/admin" component={AdminPage} isAdmin={setIsAdmin}/>
       <Route path="/user" component={UserPage} />
-      <Route path="/register" component={Register} />
-      {/* <Route path="/userInfo" component={UserInfo} />
-      <Route path="/aptInfo" component={AptInfo} />
-      <Route path="/billsInfo" component={BillsInfo} /> */}
+
       </Switch>
     </Router>
 </>
