@@ -54,3 +54,29 @@ code {
 .usertable {
   padding: 1rem;
 }
+
+.usercontainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 2rem;
+}
+.usercard {
+  display: flex;
+  justify-content: space-around;
+  height: 25rem;
+  margin: 1rem;
+  margin-top: 5rem;
+}
+
+.f {
+  width: 30%;
+}
+.s {
+  width: 50%;
+}
+
+.paybtn {
+  width: 30%;
+  align-self: center;
+}

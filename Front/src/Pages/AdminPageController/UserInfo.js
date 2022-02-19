@@ -8,7 +8,8 @@ export default function UserInfo(){
     return (
         <>
         <AdminNavbar />
- 
+        
+        <h2>useeeeeeeeeeeeeeeeeeeeer</h2>
       
     </>
 )};

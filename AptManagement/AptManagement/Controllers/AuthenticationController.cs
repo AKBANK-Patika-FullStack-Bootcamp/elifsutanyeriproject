@@ -56,7 +56,7 @@ namespace JwtWebApiTutorial.Controllers
             if (result != null)
             {
                 string token = CreateToken(result);
-                return Ok(new { token = token, isAdmin = result.IsAdmin, UserName = result.UserName });
+                return Ok(new { token = token, isAdmin = result.IsAdmin, UserName = result.UserName, userId= result.UserId });
             }
             else
             {

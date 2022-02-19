@@ -4,16 +4,15 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Register from './Components/Register';
 import Header from './Components/Header';
 import AdminPage from './Pages/AdminPageController/AdminPage';
-// import UserInfo from './Pages/AdminPageController/UserInfo';
-// import AptInfo from './Pages/AdminPageController/AptInfo';
-// import BillsInfo from './Pages/AdminPageController/BillsInfo';
 import UserPage from './Pages/UserPageController/UserPage';
 import  ProtectedRoute from './Components/ProtectedRoute';
-import setIsAdmin from './App'
-import userInfo from './Pages/AdminPageController/UserInfo'
+import setIsAdmin from './App';
+import UserInfo from './Pages/AdminPageController/UserInfo';
+import aptInfo from './Pages/AdminPageController/AptInfo';
+import BillsInfo from './Pages/AdminPageController/BillsInfo';
+
 
 const Routing = () => {
   return(
@@ -22,9 +21,13 @@ const Routing = () => {
     <Header/>
       <Switch>
       <Route exact path="/" component={App} />
-      <ProtectedRoute path="/admin" component={AdminPage} isAdmin={setIsAdmin}/>
-      <Route path="/user" component={UserPage} />
-
+      <ProtectedRoute>
+          <Route path="/admin" component={AdminPage} isadmin={setIsAdmin}>
+            {/* <Route path="/admin/userInfo" component={UserInfo}></Route>
+            <Route path="/admin/billsInfo" component={BillsInfo}></Route> */}
+          </Route>
+        <Route path="/user" component={UserPage} isadmin={setIsAdmin} />
+      </ProtectedRoute>
       </Switch>
     </Router>
 </>
@@ -42,3 +45,4 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+

@@ -15,36 +15,57 @@ namespace ManagementSystem.Controllers
     public class UserController : ControllerBase
     {
         List<User> userList = new List<User>();
-        List<Bills> bills = new List<Bills>();
+        List<Bills> billsList = new List<Bills>();
         List<APIAuthority> aPIAuthorities = new List<APIAuthority>();
         public ManagementContext _context = new ManagementContext();
-        
+        Notifications _notifications = new Notifications();
 
         [Authorize]
         [HttpGet]
-        public List<APIAuthority> GetUserInfo()
+        [Route("userBillInfo")]
+        public List<Bills> GetUserBill(int id)
         {
-            var loggedUserName = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            
-            if (loggedUserName != null)
+            billsList = _context.Bills.Where(x => x.UserId == id).ToList();
+            return billsList;
+                  
+        }
+
+        [HttpGet]
+        public List<User> UserInfo([FromHeader] int id)
+        {
+            userList = _context.User.Where(x => x.Id == id).ToList();
+            return userList;
+
+        }
+        [HttpPut]
+        public Notifications UpdateUserInfo([FromHeader] int id, User updatedUser)
+        {
+            var user = _context.User.SingleOrDefault(y => y.Id == id);
+            if(user != null)
             {
-                aPIAuthorities = _context.APIAuthority.Where(UserId => loggedUserName.Contains(UserId.UserName).Equals(loggedUserName)).ToList();   
-                
+                user.Name = updatedUser.Name != default ? updatedUser.Name : user.Name;
+                user.Surname = updatedUser.Surname != default ? updatedUser.Surname : user.Surname;
+                user.TC = updatedUser.TC != default ? updatedUser.TC : user.TC;
+                user.Email = updatedUser.Email != default ? updatedUser.Email : user.Email;
+                user.Car = updatedUser.Car != default ? updatedUser.Car : user.Car;
+                user.Phone = updatedUser.Phone != default ? updatedUser.Phone : user.Phone;
+
+                _context.SaveChanges();
+
+                _notifications.Notification = "Kullanıcı bilgisi başarıyla güncellendi";
             }
-            return aPIAuthorities;
-            /*var contractsId = waitingData.Select(data => data.ContractId).ToList();
-            var pricingCriterias = table4.Where(criteria => contractsId.Contains(criteria.ContractId)
-                                         .ToLookup(criteria => criteria.ContractId);*/
-
-
-
-/*            where u.UserName = User.Identity.Name
-            if (username = true)
+            else
             {
-                
-            }*/
-            
+                _notifications.Notification = "Kullanıcı id'si yanlış olabilir";
+            }
+
+            return _notifications;
         }
-        }
+        
+
+
     }
+
+        
+}
 

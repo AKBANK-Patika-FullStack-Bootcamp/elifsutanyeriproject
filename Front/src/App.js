@@ -5,7 +5,7 @@ import {Link, useHistory} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
+
 
 function App(props) {
   const API_URL = "http://localhost:5000/api/";
@@ -35,27 +35,11 @@ function App(props) {
       {
         setIsAdmin(false);
         localStorage.setItem("isadmin", response.data.isAdmin);
+        localStorage.setItem("userId", response.data.userId);
         history.push('/user')
       }
     });
   };
-
-  // const authAxios = () => {
-  // const token = localStorage.getItem('token');
-  //   axios.create({
-  //     baseURL: API_URL + "Admin",
-  //     timeout: 5000000,
-  //     headers: {
-  //       //burda bearer + demem gerekebilir bakıcaz
-  //       'Authorization': token,
-  //       'Content-Type': 'application/json',
-        
-  //     }
-  //   }); 
-  // }
-
-
-
 
 
   function validateForm() {
