@@ -4,27 +4,27 @@ import { Row } from "react-bootstrap";
 import { Col } from "react-bootstrap";
 import { useState } from "react";
 
-export default function PostUser() {
-  const [name, setName] = useState();
-  const [surname, setSurname] = useState();
-  const [username, setUsername] = useState();
-  const [tc, setTC] = useState();
-  const [car, setCar] = useState();
-  const [email, setEmail] = useState();
-  const [phone, setPhone] = useState();
+export default function PostBills() {
+  const [elec, setElec] = useState();
+  const [water, setWater] = useState();
+  const [gas, setGas] = useState();
+  const [due, setDue] = useState();
+  const [ispaid, setIspaid] = useState();
+  const [month, setMonth] = useState();
+  const [userid, setUserid] = useState();
 
   function handleSubmit(event) {
     event.preventDefault();
-    postUser();
+    postBill();
   }
 
-  const postUser = () => {
+  const postBill = () => {
     const token = localStorage.getItem("token");
     console.log(token);
     axios
       .post(
-        "http://localhost:5000/api/Admin/addUser",
-        { name, surname, username, phone, email, tc, car },
+        "http://localhost:5000/api/Admin/addBills",
+        { elec, gas, water, due, ispaid, month, userid },
 
         {
           headers: {
@@ -46,98 +46,92 @@ export default function PostUser() {
       <Form onSubmit={handleSubmit}>
         <Form.Group as={Row} className="mb-3">
           <Form.Label column sm={2}>
-            Adı
+            Elektrik
           </Form.Label>
           <Col sm={10}>
             <Form.Control
               type="name"
-              placeholder="Adı"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              value={elec}
+              onChange={(e) => setElec(e.target.value)}
             />
           </Col>
         </Form.Group>
 
         <Form.Group as={Row} className="mb-3">
           <Form.Label column sm={2}>
-            Soyadı
+            Su
           </Form.Label>
           <Col sm={10}>
             <Form.Control
               type="name"
-              placeholder="Soyadı"
-              value={surname}
-              onChange={(e) => setSurname(e.target.value)}
+              value={water}
+              onChange={(e) => setWater(e.target.value)}
             />
           </Col>
         </Form.Group>
 
         <Form.Group as={Row} className="mb-3">
           <Form.Label column sm={2}>
-            Kullanıcı Adı
+            Gaz
           </Form.Label>
           <Col sm={10}>
             <Form.Control
               type="name"
-              placeholder="Kullanıcı Adı"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              value={gas}
+              onChange={(e) => setGas(e.target.value)}
             />
           </Col>
         </Form.Group>
 
         <Form.Group as={Row} className="mb-3">
           <Form.Label column sm={2}>
-            TC Kimlik Numarası
+            Aidat
           </Form.Label>
           <Col sm={10}>
             <Form.Control
               type="name"
-              placeholder=""
-              value={tc}
-              onChange={(e) => setTC(e.target.value)}
+              value={due}
+              onChange={(e) => setDue(e.target.value)}
             />
           </Col>
         </Form.Group>
 
         <Form.Group as={Row} className="mb-3">
           <Form.Label column sm={2}>
-            E-mail
+            Ay
           </Form.Label>
           <Col sm={10}>
             <Form.Control
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              type="date"
+              value={month}
+              onChange={(e) => setMonth(e.target.value)}
             />
           </Col>
         </Form.Group>
 
         <Form.Group as={Row} className="mb-3">
           <Form.Label column sm={2}>
-            Telefon Numarası
+            Ödendi
           </Form.Label>
           <Col sm={10}>
             <Form.Control
               type="name"
               placeholder="Telefon Numarası"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
+              value={ispaid}
+              onChange={(e) => setIspaid(e.target.value)}
             />
           </Col>
         </Form.Group>
 
         <Form.Group as={Row} className="mb-3">
           <Form.Label column sm={2}>
-            Araç Plakası
+            Kullanıcı Id
           </Form.Label>
           <Col sm={10}>
             <Form.Control
               type="name"
-              placeholder="Plaka"
-              value={car}
-              onChange={(e) => setCar(e.target.value)}
+              value={userid}
+              onChange={(e) => setUserid(e.target.value)}
             />
           </Col>
         </Form.Group>

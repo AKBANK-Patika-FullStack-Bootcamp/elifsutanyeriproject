@@ -6,11 +6,6 @@ import { Accordion } from "react-bootstrap";
 
 export default function UserInfo() {
   const [users, setUsers] = useState("");
-  const [expanded, setExpanded] = useState(false);
-
-  const handleChange = (panel) => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false);
-  };
 
   const url = "http://localhost:5000/api/Admin/userInfo";
 
@@ -27,8 +22,10 @@ export default function UserInfo() {
   return (
     <>
       <Accordion>
-        <Accordion.Header>Kullanıcı Listesini Görüntüle</Accordion.Header>
-        <Accordion.Body onClick={getData}>
+        <Accordion.Header onClick={getData}>
+          Kullanıcı Listesini Görüntüle
+        </Accordion.Header>
+        <Accordion.Body>
           <GetUser users={users} />
         </Accordion.Body>
       </Accordion>

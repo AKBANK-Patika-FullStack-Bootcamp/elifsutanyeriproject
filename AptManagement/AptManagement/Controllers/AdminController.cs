@@ -75,20 +75,17 @@ namespace AptManagement.Controllers
         [Route("addUser")]
         public Notifications PostUser(User newUser)
         {
-            try
-            {
-            var userCheck = _context.User.FirstOrDefault(x => x.Name == x.Name && x.Surname == x.Surname);
+            
+            var userCheck = _context.User.FirstOrDefault(x => x.UserName == x.UserName);
             if (userCheck == null)
             {
                 _context.User.Add(newUser);
                 _context.SaveChanges();
                 _notifications.Notification = "Kullanıcı bilgisi başarıyla eklendi.";
             }
-            }
-
-            catch (Exception ex)
+            else
             {
-                _notifications.Notification = ex.Message;
+                _notifications.Notification = "Hata";
             }
 
             return _notifications;
