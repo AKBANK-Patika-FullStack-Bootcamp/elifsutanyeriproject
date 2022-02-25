@@ -1,5 +1,4 @@
-import { Nav } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import "../App.css";
 import { Link } from "react-router-dom";
 
 export default function AdminNavbar() {
@@ -21,7 +20,7 @@ export default function AdminNavbar() {
   return (
     <>
       <h2>Yönetici Paneli</h2>
-      <ul>
+      <ul className="adminNav">
         {menu.map((menuItem) => (
           <li key={menuItem.name}>
             <Link to={menuItem.path}>{menuItem.name}</Link>

@@ -22,22 +22,22 @@ export default function BillsInfo() {
 
   return (
     <>
-      <h1>Fatura Bilgileri</h1>
-
-      <Accordion>
-        <Accordion.Header onClick={getData}>
-          Aidat Listesini Görüntüle
-        </Accordion.Header>
-        <Accordion.Body>
-          <GetBills bills={bills} />
-        </Accordion.Body>
-      </Accordion>
-      <Accordion>
-        <Accordion.Header>Aidat/Fatura Ekle</Accordion.Header>
-        <Accordion.Body>
-          <PostBills />
-        </Accordion.Body>
-      </Accordion>
+      <div className="accordContainer">
+        <Accordion>
+          <Accordion.Header onClick={getData}>
+            Aidat Listesini Görüntüle
+          </Accordion.Header>
+          <Accordion.Body>
+            <GetBills bills={bills} />
+          </Accordion.Body>
+        </Accordion>
+        <Accordion>
+          <Accordion.Header>Aidat/Fatura Ekle</Accordion.Header>
+          <Accordion.Body className="accordForm">
+            <PostBills />
+          </Accordion.Body>
+        </Accordion>
+      </div>
     </>
   );
 }

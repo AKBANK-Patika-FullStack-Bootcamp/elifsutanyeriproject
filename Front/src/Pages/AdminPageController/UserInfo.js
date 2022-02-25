@@ -21,20 +21,22 @@ export default function UserInfo() {
   };
   return (
     <>
-      <Accordion>
-        <Accordion.Header onClick={getData}>
-          Kullanıcı Listesini Görüntüle
-        </Accordion.Header>
-        <Accordion.Body>
-          <GetUser users={users} />
-        </Accordion.Body>
-      </Accordion>
-      <Accordion>
-        <Accordion.Header>Kullanıcı Ekle</Accordion.Header>
-        <Accordion.Body>
-          <PostUser />
-        </Accordion.Body>
-      </Accordion>
+      <div className="accordContainer">
+        <Accordion>
+          <Accordion.Header onClick={getData}>
+            Kullanıcı Listesini Görüntüle
+          </Accordion.Header>
+          <Accordion.Body>
+            <GetUser users={users} />
+          </Accordion.Body>
+        </Accordion>
+        <Accordion>
+          <Accordion.Header>Kullanıcı Ekle</Accordion.Header>
+          <Accordion.Body className="accordForm">
+            <PostUser />
+          </Accordion.Body>
+        </Accordion>
+      </div>
     </>
   );
 }

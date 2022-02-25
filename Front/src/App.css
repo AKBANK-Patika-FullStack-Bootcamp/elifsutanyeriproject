@@ -16,3 +16,38 @@
 .App-link {
   color: #61dafb;
 }
+
+.adminNav {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  margin: 2rem;
+  font-size: x-large;
+}
+
+.adminNav li {
+  border-left: 1px solid black;
+  width: 33%;
+}
+
+.adminNav li:hover {
+  background-color: #caced4;
+}
+
+.adminNav a {
+  text-decoration: none;
+  color: rgb(255, 153, 0);
+  width: 33%;
+}
+
+.accordContainer {
+  width: 70%;
+  margin: auto;
+}
+
+.accordForm {
+  width: 50%;
+}
+.accordion-header {
+  border: 2px solid gray;
+}
